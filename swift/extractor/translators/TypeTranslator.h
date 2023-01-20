@@ -1,6 +1,7 @@
 #pragma once
 
 #include "swift/extractor/translators/TranslatorBase.h"
+#include "swift/extractor/translators/TypeMangler.h"
 #include "swift/extractor/trap/generated/type/TrapClasses.h"
 
 namespace codeql {
@@ -77,6 +78,8 @@ class TypeTranslator : public TypeTranslatorBase<TypeTranslator> {
       const swift::ParameterizedProtocolType& type);
 
  private:
+  TypeMangler typeMangler;
+
   void fillType(const swift::TypeBase& type, codeql::Type& entry);
   void fillArchetypeType(const swift::ArchetypeType& type, codeql::ArchetypeType& entry);
   void fillUnarySyntaxSugarType(const swift::UnarySyntaxSugarType& type,
@@ -87,9 +90,9 @@ class TypeTranslator : public TypeTranslatorBase<TypeTranslator> {
   void fillBoundGenericType(const swift::BoundGenericType& type, codeql::BoundGenericType& entry);
   void fillAnyGenericType(const swift::AnyGenericType& type, codeql::AnyGenericType& entry);
 
-  template <typename T, typename... Args>
-  auto createTypeEntry(const T& type, const Args&... args) {
-    auto entry = dispatcher.createEntry(type, args...);
+  template <typename T>
+  auto createTypeEntry(const T& type) {
+    auto entry = dispatcher.createEntry(type, typeMangler.mangleType(type));
     fillType(type, entry);
     return entry;
   }
