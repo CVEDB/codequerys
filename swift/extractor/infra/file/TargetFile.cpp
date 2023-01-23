@@ -50,7 +50,7 @@ TargetFile::TargetFile(const std::filesystem::path& target,
 bool TargetFile::init() {
   errno = 0;
   // since C++17 "x" mode opens with O_EXCL (fails if file already exists)
-  if (auto f = std::fopen(targetPath.c_str(), "wx")) {
+  if (auto f = std::fopen(targetPath.c_str(), "w")) {
     std::fclose(f);
     out.open(workingPath);
     checkOutput("open file for writing");

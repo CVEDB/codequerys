@@ -4,14 +4,15 @@
 #include <string>
 
 namespace codeql {
-class TypeMangler {
+class Mangler {
  public:
   template <typename T>
   std::string mangleType(const T& type) {
-    return "";
+    return type.getString();
   }
 
-  std::string mangleType(const swift::ProtocolType& type);
+  //  std::string mangleType(const swift::ProtocolType& type);
   std::string mangleType(const swift::ModuleType& type);
+  //  std::string mangleType(const swift::StructType& type);
 };
 }  // namespace codeql
