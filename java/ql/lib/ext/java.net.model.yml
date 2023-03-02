@@ -9,27 +9,27 @@ extensions:
       pack: codeql/java-all
       extensible: sinkModel
     data:
-      - ["java.net", "URLClassLoader", True, "URLClassLoader", "(URL[],ClassLoader)", "", "Argument[0]", "open-url", "ai-generated"]
       - ["java.net", "URL", False, "openConnection", "", "", "Argument[-1]", "open-url", "manual"]
       - ["java.net", "URL", False, "openStream", "", "", "Argument[-1]", "open-url", "manual"]
-      - ["java.net", "URLClassLoader", False, "URLClassLoader", "(String,URL[],ClassLoader)", "", "Argument[1]", "open-url", "manual"]
-      - ["java.net", "URLClassLoader", False, "URLClassLoader", "(String,URL[],ClassLoader,URLStreamHandlerFactory)", "", "Argument[1]", "open-url", "manual"]
-      - ["java.net", "URLClassLoader", False, "URLClassLoader", "(URL[])", "", "Argument[0]", "open-url", "manual"]
-      - ["java.net", "URLClassLoader", False, "URLClassLoader", "(URL[],ClassLoader)", "", "Argument[0]", "open-url", "manual"]
-      - ["java.net", "URLClassLoader", False, "URLClassLoader", "(URL[],ClassLoader,URLStreamHandlerFactory)", "", "Argument[0]", "open-url", "manual"]
       - ["java.net", "URLClassLoader", False, "newInstance", "", "", "Argument[0]", "open-url", "manual"]
+      - ["java.net", "URLClassLoader", False, "URLClassLoader", "(String,URL[],ClassLoader,URLStreamHandlerFactory)", "", "Argument[1]", "open-url", "manual"]
+      - ["java.net", "URLClassLoader", False, "URLClassLoader", "(String,URL[],ClassLoader)", "", "Argument[1]", "open-url", "manual"]
+      - ["java.net", "URLClassLoader", False, "URLClassLoader", "(URL[],ClassLoader,URLStreamHandlerFactory)", "", "Argument[0]", "open-url", "manual"]
+      - ["java.net", "URLClassLoader", False, "URLClassLoader", "(URL[],ClassLoader)", "", "Argument[0]", "open-url", "manual"]
+      - ["java.net", "URLClassLoader", False, "URLClassLoader", "(URL[])", "", "Argument[0]", "open-url", "manual"]
+      - ["java.net", "URLClassLoader", True, "URLClassLoader", "(URL[],ClassLoader)", "", "Argument[0]", "open-url", "ai-generated"]
   - addsTo:
       pack: codeql/java-all
       extensible: summaryModel
     data:
-      - ["java.net", "URI", True, "resolve", "(URI)", "", "Argument[0]" "ReturnValue", "taint", "ai-generated"]
-      - ["java.net", "InetAddress", True, "getAllByName", "(String)", "", "Argument[0]" "ReturnValue.ArrayElement", "taint", "ai-generated"]
-      - ["java.net", "URI", False, "URI", "(String)", "", "Argument[0]", "Argument[-1]", "taint", "manual"]
+      - ["java.net", "InetAddress", True, "getAllByName", "(String)", "", "Argument[0]", "ReturnValue.ArrayElement", "taint", "ai-generated"]
       - ["java.net", "URI", False, "create", "", "", "Argument[0]", "ReturnValue", "taint", "manual"]
       - ["java.net", "URI", False, "toASCIIString", "", "", "Argument[-1]", "ReturnValue", "taint", "manual"]
       - ["java.net", "URI", False, "toString", "", "", "Argument[-1]", "ReturnValue", "taint", "manual"]
       - ["java.net", "URI", False, "toURL", "", "", "Argument[-1]", "ReturnValue", "taint", "manual"]
-      - ["java.net", "URL", False, "URL", "(String)", "", "Argument[0]", "Argument[-1]", "taint", "manual"]
-      - ["java.net", "URL", False, "toURI", "", "", "Argument[-1]", "ReturnValue", "taint", "manual"]
+      - ["java.net", "URI", False, "URI", "(String)", "", "Argument[0]", "Argument[-1]", "taint", "manual"]
+      - ["java.net", "URI", True, "resolve", "(URI)", "", "Argument[0]", "ReturnValue", "taint", "ai-generated"]
       - ["java.net", "URL", False, "toExternalForm", "", "", "Argument[-1]", "ReturnValue", "taint", "manual"]
+      - ["java.net", "URL", False, "toURI", "", "", "Argument[-1]", "ReturnValue", "taint", "manual"]
+      - ["java.net", "URL", False, "URL", "(String)", "", "Argument[0]", "Argument[-1]", "taint", "manual"]
       - ["java.net", "URLDecoder", False, "decode", "", "", "Argument[0]", "ReturnValue", "taint", "manual"]
